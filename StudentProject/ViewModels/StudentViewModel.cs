@@ -7,14 +7,9 @@ namespace StudentProject.ViewModels
     public partial class StudentViewModel : ObservableObject
     {
         [ObservableProperty]
-        private Student _student;
+        private Student _student = new Student();
 
         [ObservableProperty]
         private List<string> _educationLevels = new EducationLevels().AllEducationLevels;
-
-        public StudentViewModel()
-        {
-            _student = new Student();
-        }
     }
 }
