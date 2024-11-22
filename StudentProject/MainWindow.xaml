@@ -37,9 +37,14 @@
         
         
         <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
-            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80">Új</Button>
-            <Button Margin="0 10 2 2" HorizontalAlignment="Center" MinWidth="80">Mentés</Button>
-            <Button Margin="0 10 2 2" HorizontalAlignment="Left" MinWidth="80">Törlés</Button>
+            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80"
+                    Command="{Binding DoNewCommand}" CommandParameter="{Binding Student}">Új</Button>
+            
+            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80"
+                    Command="{Binding DoSaveCommand}" CommandParameter="{Binding Student}">Mentés</Button>
+            
+            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80"
+                    Command="{Binding DoDeleteCommand}" CommandParameter="{Binding Student}">Törlés</Button>
         </StackPanel>
 
         
@@ -61,7 +66,7 @@
                  Grid.ColumnSpan="2" 
                  Margin="2 2 2 2"
                  ItemsSource="{Binding Students}"
-                 SelectedItem="{Binding SelectedStudent}"
+                 SelectedItem="{Binding Student}"
          />
     </Grid>
 </Window>
