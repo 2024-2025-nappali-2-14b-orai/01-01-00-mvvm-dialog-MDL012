@@ -11,5 +11,10 @@ namespace StudentProject.ViewModels
 
         [ObservableProperty]
         private List<string> _educationLevels = new EducationLevels().AllEducationLevels;
+
+        public StudentViewModel()
+        {
+            Student.BirthsDay = System.DateTime.Now.AddYears(-40);
+        }
     }
 }
