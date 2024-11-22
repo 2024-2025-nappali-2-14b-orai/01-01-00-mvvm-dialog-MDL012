@@ -34,8 +34,15 @@
         <Label Grid.Row="4" Grid.Column="0">Évfolyam:</Label>
         <Label Grid.Row="5" Grid.Column="0">Osztály:</Label>
         <Label Grid.Row="6" Grid.Column="0">Tanulmányi szint:</Label>
-        <Button Grid.Row="7" Grid.ColumnSpan="2" Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80">Mentés</Button>
+        
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.ColumnSpan="2">
+            <Button Margin="0 10 2 2" HorizontalAlignment="Right" MinWidth="80">Új</Button>
+            <Button Margin="0 10 2 2" HorizontalAlignment="Center" MinWidth="80">Mentés</Button>
+            <Button Margin="0 10 2 2" HorizontalAlignment="Left" MinWidth="80">Törlés</Button>
+        </StackPanel>
 
+        
         <TextBox Grid.Row="1" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding Student.LastName}"></TextBox>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" Padding="0 2" Text="{Binding Student.FirstName}"></TextBox>
         <DatePicker Grid.Row="3" Grid.Column="1" Margin="2 2 2 2" SelectedDate="{Binding Student.BirthsDay}"></DatePicker>
@@ -50,30 +57,11 @@
             SelectedItem="{Binding Student.EducationLevel}"
             SelectedIndex="0">
         </ComboBox>
-        <GroupBox Grid.Row="8" Grid.ColumnSpan="2">
-            <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Margin="2 10 2 2">
-                <StackPanel Orientation="Horizontal">
-                    <Label>Vezeték név:</Label>
-                    <Label Content="{Binding Student.LastName}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Kereszt név:</Label>
-                    <Label Content="{Binding Student.FirstName}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Születési év:</Label>
-                    <Label Content="{Binding Student.BirthsDay}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Évfolyam és osztály:</Label>
-                    <Label Content="{Binding Student.SchoolYear}"></Label>
-                    <Label Content="{Binding Student.SchoolClass}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label>Tanulmányi szint:</Label>
-                    <Label Content="{Binding Student.EducationLevel}"></Label>
-                </StackPanel>
-            </StackPanel>
-        </GroupBox>
+        <ListBox Grid.Row="8"
+                 Grid.ColumnSpan="2" 
+                 Margin="2 2 2 2"
+                 ItemsSource="{Binding Students}"
+                 SelectedItem="{Binding SelectedStudent}"
+         />
     </Grid>
 </Window>
