@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using StudentProject.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace StudentProject.ViewModels
 {
@@ -28,14 +29,25 @@ namespace StudentProject.ViewModels
         [RelayCommand]
         public void DoSave(Student student)
         {
-            if(Student.EducationLevel != "")
+            if (Student.LastName != "" && Student.FirstName != "")
             {
-                Students.Add(student);
-                
-                Student = new Student();
-                Student.EducationLevel = "";
-                Student.BirthsDay = System.DateTime.Now.AddYears(-40);
-                OnPropertyChanged(nameof(Student));
+                if (Student.EducationLevel != "")
+                {
+                    Students.Add(student);
+
+                    Student = new Student();
+                    Student.EducationLevel = "";
+                    Student.BirthsDay = System.DateTime.Now.AddYears(-40);
+                    OnPropertyChanged(nameof(Student));
+                }
+                else
+                {
+                    MessageBox.Show("Nincs megadva tanulmányi szint", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nincs megadva név", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
